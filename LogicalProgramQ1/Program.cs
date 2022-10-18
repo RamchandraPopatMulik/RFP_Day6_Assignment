@@ -4,17 +4,21 @@
     {
         static void Main(string[] args)
         {
-            int n1 = 0, n2 = 1, n3, i, num;
-            Console.Write("Enter the number of elements: ");
-            num = int.Parse(Console.ReadLine());
-            Console.Write(n1 + " " + n2 + " ");
-            for (i = 2; i < num; i++)
+            Console.WriteLine("Please Enter Your Number :");
+            int num = Convert.ToInt32(Console.ReadLine());
+
+            int i = 1;
+            int total = 0;
+
+            for (i = 1; i < num; i++)
             {
-                n3 = n1 + n2;
-                Console.Write(n3 + " ");
-                n1 = n2;
-                n2 = n3;
+                if (num % i == 0)
+                    total += i;
             }
+            if (total == num)
+                Console.Write("{0} is a perfect number", num);
+            else
+                Console.Write("{0} is not a perfect number", num);
         }
     }
 }
