@@ -1,16 +1,23 @@
-﻿namespace LogicalProgramQ1
+﻿using System.Diagnostics;
+
+namespace LogicalProgramQ1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please Enter Your Number: ");
-            int n = Convert.ToInt32(Console.ReadLine());
+            Stopwatch stopwatch = new Stopwatch();
 
-            for (int i = n; i >= 1; i--)
+            stopwatch.Start();
+            for (int i = 0; i < 1000; i++)
             {
-                Console.WriteLine(i);
+                Console.WriteLine("Ramchandra Popat Mulik");
             }
+
+            stopwatch.Stop();
+            Console.WriteLine("Time Elapsed : {0}",
+                stopwatch.Elapsed);
+            Console.ReadLine();
         }
     }
 }
