@@ -6,18 +6,10 @@ namespace LogicalProgramQ1
     {
         static void Main(string[] args)
         {
-            Stopwatch stopwatch = new Stopwatch();
-
-            stopwatch.Start();
-            for (int i = 0; i < 1000; i++)
-            {
-                Console.WriteLine("Ramchandra Popat Mulik");
-            }
-
-            stopwatch.Stop();
-            Console.WriteLine("Time Elapsed : {0}",
-                stopwatch.Elapsed);
-            Console.ReadLine();
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            Random random = new Random();
+            string result = new string(Enumerable.Repeat(chars, 8).Select(s => s[random.Next(s.Length)]).ToArray());
+            Console.WriteLine(result);  
         }
     }
 }
