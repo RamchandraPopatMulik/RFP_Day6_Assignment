@@ -4,21 +4,36 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please Enter Your Number :");
-            int num = Convert.ToInt32(Console.ReadLine());
-
-            int i = 1;
-            int total = 0;
-
-            for (i = 1; i < num; i++)
+            Console.WriteLine("Enter a number");
+            int number = Convert.ToInt32(Console.ReadLine());
+            int result = Check_Prime(number);
+            if (result == 0)
             {
-                if (num % i == 0)
-                    total += i;
+                Console.WriteLine("{0} is not a prime number", number);
             }
-            if (total == num)
-                Console.Write("{0} is a perfect number", num);
             else
-                Console.Write("{0} is not a perfect number", num);
+            {
+                Console.WriteLine("{0} is  a prime number", number);
+            }
+            Console.Read();
+        }
+
+        private static int Check_Prime(int number)
+        {
+            int i;
+            for (i = 2; i <= number - 1; i++)
+            {
+                if (number % i == 0)
+                {
+                    return 0;
+                }
+            }
+            if (i == number)
+            {
+                return 1;
+            }
+            return 0;
         }
     }
 }
+    
