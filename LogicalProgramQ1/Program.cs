@@ -2,107 +2,60 @@
 
 namespace LogicalProgramQ1
 {
-    internal class VendingMachine
+    public int Date, Month, Year;
+
+    public DayOfWeek(int date, int month, int year)
     {
-        public int Number;
+        Date = date;
+        Month = month;
+        Year = year;
+    }
+    public void findDayOfWeek()
+    {
+        int x = 0, y0 = 0, m0 = 0, d0;
+        y0 = Year - (14 - Month) / 12;
+        x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+        m0 = Month + 12 * ((14 - Month) / 12) - 2;
+        d0 = (Date + x + 31 * m0 / 12) % 7;
 
-        public VendingMachine(int number)
+        switch (d0)
         {
-            Number = number;
-        }
-
-        public void calculateChange()
-        {
-            int thousand = 0;
-            int fiveHundred = 0;
-            int hundred = 0;
-            int fifty = 0;
-            int ten = 0;
-            int five = 0;
-            int two = 0;
-            int one = 0;
-            if (Number >= 1000)
-            {
-                while (Number >= 1000)
-                {
-                    Number = Number - 1000;
-                    thousand++;
-                }
-                Console.WriteLine("1000 Rupees Notes :" + thousand);
-            }
-            if (Number >= 500)
-            {
-                while (Number >= 500)
-                {
-                    Number = Number - 500;
-                    fiveHundred++;
-                }
-                Console.WriteLine("500 Rupees Notes :" + fiveHundred);
-            }
-            if (Number >= 100)
-            {
-                while (Number >= 100)
-                {
-                    Number = Number - 100;
-                    hundred++;
-                }
-                Console.WriteLine("100 Rupees Notes :" + hundred);
-            }
-            if (Number >= 50)
-            {
-                while (Number >= 50)
-                {
-                    Number = Number - 50;
-                    fifty++;
-                }
-                Console.WriteLine("50 Rupees Notes :" + fifty);
-            }
-            if (Number >= 10)
-            {
-                while (Number >= 10)
-                {
-                    Number = Number - 10;
-                    ten++;
-                }
-                Console.WriteLine("10 Rupees Notes :" + ten);
-            }
-            if (Number >= 5)
-            {
-                while (Number >= 5)
-                {
-                    Number = Number - 5;
-                    five++;
-                }
-                Console.WriteLine("5 Rupees Notes :" + five);
-            }
-            if (Number >= 2)
-            {
-                while (Number >= 2)
-                {
-                    Number = Number - 2;
-                    two++;
-                }
-                Console.WriteLine("2 Rupees Notes :" + two);
-            }
-            if (Number >= 1)
-            {
-                while (Number >= 1)
-                {
-                    Number = Number - 1;
-                    one++;
-                }
-                Console.WriteLine("1 Rupees Notes :" + one);
-            }
-        }
-
-        static void Main(String[] args)
-        {
-            Console.WriteLine("Please Enter Number of Rupees  :");
-            int n = Convert.ToInt32(Console.ReadLine());
-
-            VendingMachine vendingMachine = new VendingMachine(n);
-            vendingMachine.calculateChange();
+            case 0:
+                Console.WriteLine("Sunday");
+                break;
+            case 1:
+                Console.WriteLine("Monday");
+                break;
+            case 2:
+                Console.WriteLine("Thuesday");
+                break;
+            case 3:
+                Console.WriteLine("Wednesday");
+                break;
+            case 4:
+                Console.WriteLine("Thursday");
+                break;
+            case 5:
+                Console.WriteLine("Friday");
+                break;
+            case 6:
+                Console.WriteLine("Saturday");
+                break;
         }
     }
+    static void Main(string[] args)
+    {
+        Console.Write("Enter Date : ");
+        int date = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter Month : ");
+        int month = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter Year : ");
+        int year = Convert.ToInt32(Console.ReadLine());
+
+        DayOfWeek dayOfWeek = new DayOfWeek(date, month, year);
+        dayOfWeek.findDayOfWeek();
+
+    }
+}
 }
     
