@@ -1,59 +1,39 @@
 ﻿using System.Diagnostics;
 
-namespace LogicalProgramQ1
+internal class Temperature
 {
-    public int Date, Month, Year;
-
-    public DayOfWeek(int date, int month, int year)
+    public int Value;
+    public Temperature(int value)
     {
-        Date = date;
-        Month = month;
-        Year = year;
+        Value = value;
     }
-    public void findDayOfWeek()
-    {
-        int x = 0, y0 = 0, m0 = 0, d0;
-        y0 = Year - (14 - Month) / 12;
-        x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
-        m0 = Month + 12 * ((14 - Month) / 12) - 2;
-        d0 = (Date + x + 31 * m0 / 12) % 7;
 
-        switch (d0)
+    public void temperatureConversion()
+    {
+        switch (Value)
         {
-            case 0:
-                Console.WriteLine("Sunday");
-                break;
             case 1:
-                Console.WriteLine("Monday");
+                Console.WriteLine("Please Enter the Value to Convert Tempearture into Celcius: ");
+                int a = Convert.ToInt32(Console.ReadLine());
+                int result1 = (a * 9 / 5) + 32;
+                Console.WriteLine("Celcius Value is:" + result1);
                 break;
             case 2:
-                Console.WriteLine("Thuesday");
+                Console.WriteLine("Please Enter the Value to Convert Tempearture into Fahrenheit: ");
+                int b = Convert.ToInt32(Console.ReadLine());
+                int result2 = (b - 32) * 5 / 9;
+                Console.WriteLine("Fahrenheit Value is:" + result2);
                 break;
-            case 3:
-                Console.WriteLine("Wednesday");
-                break;
-            case 4:
-                Console.WriteLine("Thursday");
-                break;
-            case 5:
-                Console.WriteLine("Friday");
-                break;
-            case 6:
-                Console.WriteLine("Saturday");
-                break;
+
         }
     }
     static void Main(string[] args)
     {
-        Console.Write("Enter Date : ");
-        int date = Convert.ToInt32(Console.ReadLine());
-        Console.Write("Enter Month : ");
-        int month = Convert.ToInt32(Console.ReadLine());
-        Console.Write("Enter Year : ");
-        int year = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Please Enter Value : ");
+        int value = Convert.ToInt32(Console.ReadLine());
 
-        DayOfWeek dayOfWeek = new DayOfWeek(date, month, year);
-        dayOfWeek.findDayOfWeek();
+        Temperature temp = new Temperature(value);
+        temp.temperatureConversion();
 
     }
 }
